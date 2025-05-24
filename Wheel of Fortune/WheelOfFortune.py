@@ -107,7 +107,7 @@ def getNumberBetween(prompt, min, max):
 
         # If we haven't gotten a number yet, add the error message
         # and ask again
-        userinp = input('{}\n{}'.format(errmessage, prompt))
+        userinp = input('{}/n{}'.format(errmessage, prompt))
 
 # Spins the wheel of fortune wheel to give a random prize
 # Examples:
@@ -115,7 +115,7 @@ def getNumberBetween(prompt, min, max):
 #    { "type": "bankrupt", "text": "Bankrupt", "prize": false },
 #    { "type": "loseturn", "text": "Lose a turn", "prize": false }
 def spinWheel():
-    with open("wheel.json", 'r') as f:
+    with open("C:/Users/brian/OneDrive/Documents/Learning/Python/PythonSpecialization/Wheel of Fortune/wheel.json", 'r') as f:
         wheel = json.loads(f.read())
         return random.choice(wheel)
 
@@ -123,15 +123,12 @@ def spinWheel():
 # Example:
 #     ("Artist & Song", "Whitney Houston's I Will Always Love You")
 def getRandomCategoryAndPhrase():
-    with open("phrases.json", 'r') as f:
+    with open("C:Users/brian/OneDrive/Documents/Learning/Python/PythonSpecialization/Wheel of Fortune/phrases.json", 'r') as f:
         phrases = json.loads(f.read())
         print(phrases)
         category = random.choice(list(phrases.keys()))
         phrase   = random.choice(phrases[category])
         return (category, phrase.upper())
-
-# Given a phrase and a list of guessed letters, returns an obscured version
-# Example:
 #     guessed: ['L', 'B', 'E', 'R', 'N', 'P', 'K', 'X', 'Z']
 #     phrase:  "GLACIER NATIONAL PARK"
 #     returns> "_L___ER N____N_L P_RK"
