@@ -66,6 +66,7 @@ def getFaces(imgSearch):
 
     face_cascade = cv.CascadeClassifier("Final Project\haarcascade_frontalface_default.xml")
     for pic in imgSearch:
+<<<<<<< Updated upstream
         grey = pictures[pic].convert('L')
         x = np.array(grey)
         faces = face_cascade.detectMultiScale(x)
@@ -77,6 +78,12 @@ def getFaces(imgSearch):
         pictures[pic].show()
             
                 
+=======
+        x = cv.cvtColor(np.array(pictures[pic]), cv.COLOR_RGB2BGR)
+        gray = cv.cvtColor(x, cv.COLOR_BGR2GRAY)
+        faces = face_cascade.detectMultiScale(gray)
+        return Image.fromarray(faces,mode="RGB")
+>>>>>>> Stashed changes
 
 
 
@@ -85,8 +92,17 @@ if __name__ == '__main__':
     createDictionary(location)
     search = "application" 
     hits = []
+<<<<<<< Updated upstream
     '''for img in pictures.keys():
         if searchPicture(pictures[img], search):
             hits.append(img)'''
     pic = ['a-0.png']
     getFaces(pic)
+=======
+    facesList = []
+    for img in pictures.keys():
+        if searchPicture(pictures[img], search):
+            hits.append(img)
+    facesList.append(getFaces(hits))
+    facesList[0].show()
+>>>>>>> Stashed changes
